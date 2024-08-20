@@ -11,7 +11,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Users {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -32,5 +32,5 @@ public class Users {
 
     @OneToMany
     @JoinColumn(name = "user_id")
-    private List<Orders> orders;
+    private List<Order> orders;
 }

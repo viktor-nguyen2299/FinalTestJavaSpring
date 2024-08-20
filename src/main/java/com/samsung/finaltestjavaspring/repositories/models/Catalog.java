@@ -1,9 +1,6 @@
 package com.samsung.finaltestjavaspring.repositories.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
@@ -12,17 +9,17 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Orders {
+public class Catalog {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
-    private Integer total_qty;
-
-    private Long total_amount;
+    @Column(length=150,nullable = false)
+    private String name;
 
     private boolean status;
 
-
+    @OneToOne(mappedBy = "catalog", cascade = CascadeType.ALL)
+    private Products product;
 }

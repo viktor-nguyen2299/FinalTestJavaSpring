@@ -1,8 +1,7 @@
 package com.samsung.finaltestjavaspring.controller;
 
 
-import ch.qos.logback.core.model.Model;
-import com.samsung.finaltestjavaspring.repositories.services.CatalogService;
+import org.springframework.ui.Model;
 import com.samsung.finaltestjavaspring.repositories.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,10 +13,14 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    @GetMapping("/")
-    public ViewProduct(final Model model){
-        return "SelectedCatalog";
+    @GetMapping("/products")
+    public String listProducts(Model model, @RequestParam(required = false) String search) {
+        if (search != null) {
+            model.addAttribute("products", productService.searchProducts(search));
+        } else {
+            model.addAttribute("products", productService.getAllProducts());
+        }
+        model.addAttribute("catalogs", productService.getAllCatalogs());
+        return "product/list";
     }
-
-    // Các endpoint khác
 }

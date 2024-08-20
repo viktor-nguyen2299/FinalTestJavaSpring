@@ -3,7 +3,6 @@ package com.samsung.finaltestjavaspring.repositories.models;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -23,14 +22,14 @@ public class Products {
     @Column(length=200)
     private String picture;
 
-    private Long Price;
+    private Long price;
 
     @OneToOne
     @JoinColumn(name = "catalog_id", referencedColumnName = "id")
-    private Catalogs catalog;
+    private Catalog catalog;
 
 
 
     @ManyToMany(mappedBy = "products_id")
-    private Set<OrderDetails> orderDetails;
+    private Set<OrderDetail> orderDetails;
 }
