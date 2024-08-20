@@ -1,0 +1,13 @@
+package com.samsung.finaltestjavaspring;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class FinalTestJavaSpringApplicationTests {
+
+    @Test
+    void contextLoads() {
+    }
+
+}
